@@ -14,10 +14,10 @@ import static org.junit.Assert.*;
 import static system.FileSystem.fileStorage;
 
 public class SpaceTest {
-    static Leaf someleaf;
-    static FileSystem fs;
-    @BeforeClass
-    public static void setup() throws OutOfSpaceException {
+     Leaf someleaf;
+     FileSystem fs;
+    @Before
+    public void setup() throws OutOfSpaceException {
         fs = new FileSystem(30);
         someleaf=new Leaf("AmazingLeaf",5);
 
@@ -82,7 +82,7 @@ public class SpaceTest {
     @org.junit.Test
     public void countFreeSpace() {
         System.out.println(fileStorage.countFreeSpace());
-        assertEquals(0,fileStorage.countFreeSpace());
+        assertEquals(25,fileStorage.countFreeSpace());
 
 
     }

@@ -10,16 +10,18 @@ import static org.junit.Assert.*;
 
 public class TreeTest {
 
-    static Tree theTree;
-    static Tree theAmazingLeaf;
-    static Tree theEvilLeaf;
-    static Tree theSmartLeaf;
-    static Tree theBoringLeaf;
-    static Tree theMurderLeaf;
+     Tree theTree;
+     Tree theAmazingLeaf;
+     Tree theEvilLeaf;
+     Tree theSmartLeaf;
+     Tree theBoringLeaf;
+     Tree theMurderLeaf;
+     Tree theThiefLeaf;
 
-    @BeforeClass
-    public static void setUp() throws Exception {
+    @Before
+    public  void setUp() throws Exception {
         theTree = new Tree("theTree");
+
         /**
          * Create Childs
          */
@@ -28,6 +30,7 @@ public class TreeTest {
         theSmartLeaf=theTree.GetChildByName("theSmartLeaf");
         theBoringLeaf=theTree.GetChildByName("theBoringLeaf");
         theMurderLeaf=theTree.GetChildByName("theMurderLeaf");
+        theThiefLeaf=theTree.GetChildByName("TheSmartLeaf");
 
     }
 
