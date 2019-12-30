@@ -37,7 +37,7 @@ public class SpaceTest {
     public void dealloc() throws OutOfSpaceException {
 //        Testing Dealloc new data
         Tree root = new Tree("root");
-        someleaf=new Leaf("AmazingLeaf",5);
+//        someleaf=new Leaf("AmazingLeaf",5);
         someleaf.parent=root;
         assertEquals(25, fileStorage.countFreeSpace());
         assertEquals(30,fileStorage.getAlloc().length);
@@ -61,16 +61,12 @@ public class SpaceTest {
         assertEquals(30, fileStorage.countFreeSpace());
 
 
-
+        fileStorage.Dealloc(someleaf);
         for (Leaf l : fileStorage.getAlloc()){
             assertEquals(null,l);
         }
         assertEquals(0,root.children.size());
-        Leaf laf = new Leaf("laf",30);
-        laf.parent=root;
-        assertEquals(0,fileStorage.countFreeSpace());
-        fileStorage.Dealloc(laf);
-        assertEquals(30,fileStorage.countFreeSpace());
+
 
 
     }

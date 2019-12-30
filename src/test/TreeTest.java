@@ -6,6 +6,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import system.Tree;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class TreeTest {
@@ -30,7 +32,7 @@ public class TreeTest {
         theSmartLeaf=theTree.GetChildByName("theSmartLeaf");
         theBoringLeaf=theTree.GetChildByName("theBoringLeaf");
         theMurderLeaf=theTree.GetChildByName("theMurderLeaf");
-        theThiefLeaf=theTree.GetChildByName("TheSmartLeaf");
+        theThiefLeaf=theTree.GetChildByName("theSmartLeaf");
 
     }
 
@@ -51,6 +53,7 @@ public class TreeTest {
     assertNotNull(null,theBoringLeaf);
     assertNotNull(null,theMurderLeaf);
     assertTrue(theTree.children.size()>0);
+//    assertEquals(theThiefLeaf,theSmartLeaf);
     assertTrue(theTree.children.containsKey("theAmazingLeaf"));
     assertTrue(theTree.children.containsKey("theEvilLeaf"));
     assertTrue(theTree.children.containsKey("theSmartLeaf"));
@@ -59,6 +62,39 @@ public class TreeTest {
 
     assertEquals(null,theTree.parent);
 
+
+    }
+    @Test
+    public void checkTreePath(){
+        assertEquals(0,theTree.getPath().length);
+        assertEquals(1,theBoringLeaf.getPath().length);
+        assertEquals(1,theEvilLeaf.getPath().length);
+        assertEquals(1,theMurderLeaf.getPath().length);
+        assertEquals(1,theSmartLeaf.getPath().length);
+        assertEquals(1,theThiefLeaf.getPath().length);
+
+        ArrayList<Tree> arrayTree = new ArrayList<Tree>() {{
+            add(theTree);
+            add(theBoringLeaf);
+            add(theEvilLeaf);
+            add(theMurderLeaf);
+            add(theSmartLeaf);
+            add(theThiefLeaf);
+        }};
+
+        ArrayList<String[]> arrayStrings = new ArrayList<String[]>() {{
+            add(new String[]{"theTree"});
+            add(new String[]{"theBoringLeaf"});
+            add(new String[]{"theEvilLeaf"});
+            add(new String[]{"theMurderLeaf"});
+            add(new String[]{"theSmartLeaf"});
+            add(new String[]{"theSmartLeaf"});
+        }};
+
+
+        for (int i = 1; i < arrayTree.size(); i++) {
+            assertEquals(arrayStrings.get(i)[0],arrayTree.get(i).getPath()[0]);
+        }
 
     }
 }
